@@ -11648,21 +11648,23 @@
 		}
 		else
 		{
+			var urlArgs = (window.parent && window.parent.APP && window.parent.APP.urlArgs) || '';
 			if (scriptDirectory) {
-				loadScript(scriptDirectory + 'sdk-all.js', onSuccess, onError);
+				loadScript(scriptDirectory + 'sdk-all.js?' + urlArgs, onSuccess, onError);
 			} else {
-				var urlArgs = (window.parent && window.parent.APP && window.parent.APP.urlArgs) || '';
 				loadScript('./../../../../sdkjs/' + sdkName + '/sdk-all.js?' + urlArgs, onSuccess, onError);
 			}
 		}
 	}
 
 	function loadChartStyles(onSuccess, onError) {
-		loadScript('../../../../sdkjs/common/Charts/ChartStyles.js', onSuccess, onError);
+		var urlArgs = (window.parent && window.parent.APP && window.parent.APP.urlArgs) || '';
+		loadScript('../../../../sdkjs/common/Charts/ChartStyles.js?' + urlArgs, onSuccess, onError);
 	}
 
 	function loadPathBoolean(onSuccess, onError) {
-		loadScript('../../../../sdkjs/common/Drawings/Format/path-boolean-min.js', onSuccess, onError);
+		var urlArgs = (window.parent && window.parent.APP && window.parent.APP.urlArgs) || '';
+		loadScript('../../../../sdkjs/common/Drawings/Format/path-boolean-min.js?' + + urlArgs, onSuccess, onError);
 	}
 
 	function getAltGr(e)

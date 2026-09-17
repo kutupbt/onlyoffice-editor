@@ -100,8 +100,8 @@
 		var _onError = function(){
 			window['AscFonts'].onError();
 		};
-
-		AscCommon.loadScript(url + "fonts" + engine_name_ext, _onSuccess, _onError);
+		var urlArgs = (window.parent && window.parent.APP && window.parent.APP.urlArgs) || '';
+		AscCommon.loadScript(url + "fonts" + engine_name_ext + '?' + urlArgs, _onSuccess, _onError);
 	};
 
 	function FontStream(data, size)
