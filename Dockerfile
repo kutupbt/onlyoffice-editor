@@ -5,7 +5,8 @@ FROM ubuntu:26.04 AS base
 RUN sed -i 's|archive.ubuntu.com|ftp.halifax.rwth-aachen.de|g' /etc/apt/sources.list.d/ubuntu.sources
 
 # make and bzip2: no longer in the base image (as in CryptPad's later "Fix docker build").
-RUN apt-get update && apt-get install -y openjdk-21-jdk npm wget zip brotli make bzip2
+# python3: sdkjs 9.4 is built by build/build.py.
+RUN apt-get update && apt-get install -y openjdk-21-jdk npm wget zip brotli make bzip2 python3
 # Kutup: pnpm and Node pinned, as they were when this release was built
 # (CryptPad v9.3.0.140+2, 2026-05-15), so the build does not drift.
 RUN wget -qO- https://get.pnpm.io/install.sh | PNPM_VERSION=11.1.2 ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -

@@ -27,13 +27,14 @@ GRUNT_ENV += PUBLISHER_URL="$(PUBLISHER_URL)"
 WEBAPPS_DIR := web-apps
 
 WEBAPPS = $(OUTPUT)/$(WEBAPPS_DIR)
-NODE_MODULES = build/node_modules ../$(WEBAPPS_DIR)/build/node_modules
+# 9.4: sdkjs has no node build any more (build/build.py concatenates it).
+NODE_MODULES = ../$(WEBAPPS_DIR)/build/node_modules
 #PACKAGE_JSON = build/package.json ../$(WEBAPPS_DIR)/build/package.json
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/api/documents/api.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/documenteditor/main/app.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/presentationeditor/main/app.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/spreadsheeteditor/main/app.js
-SDKJS_FILES += word/sdk-all.js
+SDKJS_FILES += deploy/sdkjs/word/sdk-all.js
 
 .PHONY: all desktop
 
@@ -48,9 +49,9 @@ $(WEBAPPS_FILES): $(NODE_MODULES) $(SDKJS_FILES)
 	cd ../$(WEBAPPS_DIR)/build  && \
 		$(GRUNT_ENV) $(GRUNT) deploy-$(filter %editor documents,$(subst /, ,$(@D)))-component $(GRUNT_FLAGS)
 
-$(SDKJS_FILES): $(NODE_MODULES)
+$(SDKJS_FILES):
 	cd build && \
-		$(GRUNT_ENV) $(GRUNT) $(GRUNT_FLAGS)
+		$(GRUNT_ENV) python3 build.py
 
 desktop: GRUNT_FLAGS += --desktop=true
 desktop: all
