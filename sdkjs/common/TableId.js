@@ -63,7 +63,9 @@
                 if (target[property]) {
                     window.Common.Gateway.cryptPadCorruptionWarningHandler(property);
                 }
-                Reflect.set(...arguments);
+                // A set trap must report success: in strict mode (the 9.4
+                // concatenated build) a falsy return throws TypeError.
+                return Reflect.set(...arguments);
             },
         });
 
