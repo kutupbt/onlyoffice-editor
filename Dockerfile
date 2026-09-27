@@ -1,10 +1,12 @@
 # Use this (large) base image in every build below, to reduce the overall docker cache size
 FROM ubuntu:24.04 AS base
 RUN apt-get update && apt-get install -y openjdk-21-jdk npm wget zip brotli
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+# Kutup: pnpm and Node pinned (the unpinned installer now brings pnpm 11,
+# which moved its binary), as they were when this release was built.
+RUN wget -qO- https://get.pnpm.io/install.sh | PNPM_VERSION=10.28.2 ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
 ENV PNPM_HOME="/root/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN pnpm env use --global lts
+RUN pnpm env use --global 24
 RUN pnpm install -g grunt
 
 ###################### onlyoffice-editor-build ################################
