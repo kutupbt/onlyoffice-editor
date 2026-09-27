@@ -1,12 +1,17 @@
 # Use this (large) base image in every build below, to reduce the overall docker cache size
-FROM ubuntu:24.04 AS base
-RUN apt-get update && apt-get install -y openjdk-21-jdk npm wget zip brotli
-# Kutup: pnpm and Node pinned (the unpinned installer now brings pnpm 11,
-# which moved its binary), as they were when this release was built.
-RUN wget -qO- https://get.pnpm.io/install.sh | PNPM_VERSION=10.28.2 ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+FROM ubuntu:26.04 AS base
+
+# Workaround for slow archive.ubuntu.com
+RUN sed -i 's|archive.ubuntu.com|ftp.halifax.rwth-aachen.de|g' /etc/apt/sources.list.d/ubuntu.sources
+
+# make and bzip2: no longer in the base image (as in CryptPad's later "Fix docker build").
+RUN apt-get update && apt-get install -y openjdk-21-jdk npm wget zip brotli make bzip2
+# Kutup: pnpm and Node pinned, as they were when this release was built
+# (CryptPad v9.3.0.140+2, 2026-05-15), so the build does not drift.
+RUN wget -qO- https://get.pnpm.io/install.sh | PNPM_VERSION=11.1.2 ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
 ENV PNPM_HOME="/root/.local/share/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN pnpm env use --global 24
+ENV PATH="$PNPM_HOME/bin:$PATH"
+RUN pnpm env use --global 20
 RUN pnpm install -g grunt
 
 ###################### onlyoffice-editor-build ################################
@@ -14,7 +19,7 @@ FROM base AS onlyoffice-editor-build
 WORKDIR /app
 COPY onlyoffice-editor/package.json /app
 COPY onlyoffice-editor/pnpm-lock.yaml /app
-RUN pnpm install
+RUN pnpm install --dangerously-allow-all-builds
 COPY onlyoffice-editor/tsconfig.json /app
 COPY onlyoffice-editor/webpack.config.mjs /app
 COPY onlyoffice-editor/src/ /app/src
