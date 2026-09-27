@@ -13,6 +13,7 @@ common/Images/fonts_thumbnail*
 /develop
 build/sdk-*-tmp.js
 node_modules
+package.json
 package-lock.json
 */node_modules
 */package-lock.json
