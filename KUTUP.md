@@ -8,13 +8,15 @@ OnlyOffice `sdkjs` and `web-apps` source (git subtrees of
 CryptPad's changes, which let the editor run entirely in the browser. Kutup
 opens documents with it client-side; the server never sees their content.
 
-- **Branch `kutup`** is what Kutup ships: CryptPad's `v9.3.0.140+2`
-  (ONLYOFFICE 9.3.0.140), merged in over `v9.2.0.119+5`; Kutup's own changes
-  go on it. CryptPad's later `v9.3.2+` builds are based on Euro-Office, a
+- **Branch `kutup`** is what Kutup ships: **ONLYOFFICE 9.4.0**
+  (`sdkjs` and `web-apps` at `v9.4.0.131`, pulled with `git subtree pull`)
+  with CryptPad's changes carried over from their `v9.3.0.140+2`; Kutup's own
+  changes go on it. From 9.4, `sdkjs` is built by `build/build.py` (plain
+  concatenation, strict mode) instead of Grunt and Closure. CryptPad's later `v9.3.2+` builds are based on Euro-Office, a
   fork of OnlyOffice, and are not merged: Kutup follows ONLYOFFICE.
 - **`main`** follows CryptPad's `main`, for pulling their updates.
-- **Releases** are tagged `kutup-<CryptPad version>.<n>` (for example
-  `kutup-v9.3.0.140+2.1`), so CryptPad's `v*` release workflow does not run
+- **Releases** are tagged `kutup-<version>.<n>` (for example
+  `kutup-v9.4.0.131.1`), so CryptPad's `v*` release workflow does not run
   on them. Each release notes the exact commit it was built from.
 
 ## Build
