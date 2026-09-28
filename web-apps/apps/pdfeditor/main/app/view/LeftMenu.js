@@ -106,7 +106,8 @@ define([
                 el: $markup.elementById('#left-btn-support'),
                 hint: this.tipSupport,
                 iconCls: 'btn-menu-support',
-                disabled: true
+                disabled: true,
+                visible: false, // Kutup (as CryptPad in the other editors): no link to ONLYOFFICE's support site
             });
             this.btnSupport.on('click', _.bind(function() {
                 var config = this.mode.customization;

@@ -467,7 +467,8 @@ define([
             this.miBack[isVisible ?'show':'hide']();
 
             isVisible = this.mode.canSuggest;
-            this.miSuggest[isVisible ?'show':'hide']();
+            // Kutup (as CryptPad in the other editors): no feature-suggestion link.
+            this.miSuggest['hide']();
 
             if (!this.customizationDone) {
                 this.customizationDone = true;
