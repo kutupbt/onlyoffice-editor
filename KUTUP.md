@@ -12,7 +12,8 @@ opens documents with it client-side; the server never sees their content.
   (`sdkjs` and `web-apps` at `v9.4.0.131`, pulled with `git subtree pull`)
   with CryptPad's changes carried over from their `v9.3.0.140+2`; Kutup's own
   changes go on it. From 9.4, `sdkjs` is built by `build/build.py` (plain
-  concatenation, strict mode) instead of Grunt and Closure. CryptPad's later `v9.3.2+` builds are based on Euro-Office, a
+  concatenation, strict mode) instead of Grunt and Closure. The PDF editor is
+  built too (Kutup edits PDFs in the browser). CryptPad's later `v9.3.2+` builds are based on Euro-Office, a
   fork of OnlyOffice, and are not merged: Kutup follows ONLYOFFICE.
 - **`main`** follows CryptPad's `main`, for pulling their updates.
 - **Releases** are tagged `kutup-<version>.<n>` (for example

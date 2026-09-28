@@ -34,4 +34,11 @@ history is in this repository.
   detector's `Proxy` returns from its `set` trap
   (`sdkjs/common/TableId.js`), which 9.4's strict-mode build requires.
 
+- **2026-09-28:** the PDF editor (`web-apps/apps/pdfeditor`) is built and
+  shipped (`sdkjs/Makefile`), with CryptPad's client-only patches that the
+  other editors already had: no server-version check, no licence checks, no
+  feature-suggestion or support links
+  (`web-apps/apps/pdfeditor/main/app/controller/Main.js`, `view/FileMenu.js`,
+  `view/LeftMenu.js`).
+
 Every change is a commit on the `kutup` branch.
