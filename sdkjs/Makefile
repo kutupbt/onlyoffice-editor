@@ -34,6 +34,8 @@ WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/api/documents/api.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/documenteditor/main/app.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/presentationeditor/main/app.js
 WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/spreadsheeteditor/main/app.js
+# Kutup: the PDF editor (view, annotate, fill forms, edit PDFs).
+WEBAPPS_FILES += ../$(WEBAPPS_DIR)/deploy/web-apps/apps/pdfeditor/main/app.js
 SDKJS_FILES += deploy/sdkjs/word/sdk-all.js
 
 .PHONY: all desktop

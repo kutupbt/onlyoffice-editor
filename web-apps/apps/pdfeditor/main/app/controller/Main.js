@@ -1222,6 +1222,10 @@ define([
             },
 
             applyLicense: function() {
+                // Kutup: no DocumentServer to license against (the editor
+                // runs in the browser, as CryptPad disables this in the other
+                // editors' applyLicense).
+                return;
                 if (this.editorConfig.mode === 'view') {
                     if (this.appOptions.canLiveView && (this._state.licenseType===Asc.c_oLicenseResult.ConnectionsLive || this._state.licenseType===Asc.c_oLicenseResult.ConnectionsLiveOS ||
                         this._state.licenseType===Asc.c_oLicenseResult.UsersViewCount || this._state.licenseType===Asc.c_oLicenseResult.UsersViewCountOS ||
