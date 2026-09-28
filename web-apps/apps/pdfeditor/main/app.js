@@ -62,7 +62,7 @@ require.config({
         keymaster       : 'common/main/lib/core/keymaster',
         tip             : 'common/main/lib/util/Tip',
         localstorage    : 'common/main/lib/util/LocalStorage',
-        analytics       : 'common/Analytics',
+        analytics       : 'common/UiEvents',
         gateway         : 'common/Gateway',
         locale          : 'common/locale',
         irregularstack  : 'common/IrregularStack'

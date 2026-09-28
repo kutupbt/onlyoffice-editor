@@ -41,4 +41,12 @@ history is in this repository.
   (`web-apps/apps/pdfeditor/main/app/controller/Main.js`, `view/FileMenu.js`,
   `view/LeftMenu.js`).
 
+- **2026-09-28:** `web-apps/apps/common/Analytics.js` is renamed
+  `UiEvents.js` (module path `common/UiEvents`, in every editor's `app.js`,
+  `app_dev.js`, embed pages and `build/*.json`). Content blockers (uBlock
+  Origin, and browsers that build it in) block any `Analytics.js`, and the
+  editors wait for that module before starting, so they never loaded. The
+  module is unchanged; it never runs here (its Google Analytics setup is
+  disabled upstream).
+
 Every change is a commit on the `kutup` branch.

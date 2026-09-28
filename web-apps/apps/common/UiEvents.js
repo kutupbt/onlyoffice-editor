@@ -32,6 +32,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+// Kutup: formerly Analytics.js. Content blockers block that file name, and
+// every editor waits for this module before starting. It stays inert: the
+// Google Analytics setup (initialize) is never called.
 if (window.Common === undefined)
     window.Common = {};
 

@@ -47,7 +47,7 @@
                         "notification": "common/main/lib/core/NotificationCenter",
                         "keymaster": "common/main/lib/core/keymaster",
                         "tip": "common/main/lib/util/Tip",
-                        "analytics": "common/Analytics",
+                        "analytics": "common/UiEvents",
                         "gateway": "common/Gateway",
                         "locale": "common/locale",
                         "irregularstack": "common/IrregularStack"
@@ -368,7 +368,7 @@
             "src": [
                 "../apps/common/locale.js",
                 "../apps/common/Gateway.js",
-                "../apps/common/Analytics.js",
+                "../apps/common/UiEvents.js",
                 "../apps/common/main/lib/mods/dropdown.js",
                 "../apps/common/main/lib/mods/modal.js",
                 "../apps/common/main/lib/mods/tooltip.js",
